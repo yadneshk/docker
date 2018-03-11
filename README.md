@@ -1,2 +1,2 @@
 # docker
-Create docker images for different purposes
+Containerize programs of different languages.
