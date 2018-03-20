@@ -1,10 +1,14 @@
-# Choose Fedora as base image
-FROM fedora
+# Choose Alpine as base image
+FROM alpine:latest
 
 # Install required packages
-RUN dnf install sqlite  \            
-                openssh  \
-                sshpass -y
+RUN apk add --no-cache sqlite \
+            python3 \
+            py-pip \            
+            openssh  \
+            sshpass \        
+            libvirt-client \
+            virt-install -y
 
 # Create a directory /workspace
 RUN mkdir /workspace
