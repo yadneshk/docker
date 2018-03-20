@@ -4,11 +4,16 @@ FROM alpine:latest
 # Install required packages
 RUN apk add --no-cache sqlite \
             python3 \
-            py-pip \            
+            py-pip \
+            curl \            
             openssh  \
             sshpass \        
             libvirt-client \
-            virt-install -y
+            virt-install
+
+# Install Docker Machine
+RUN curl -L https://github.com/docker/machine/releases/download/v0.14.0/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine && \
+    install /tmp/docker-machine /usr/local/bin/docker-machine
 
 # Create a directory /workspace
 RUN mkdir /workspace
